@@ -206,26 +206,35 @@ word_count2(sakinys)
 print("--------15--------")
 
 def even_odd(array,boolean = True):
-    num_array15 = []
+    new_array = []
     if boolean == True:
         for i in array:
-            if i % 2 == 0:
-                # num_array.append(array[i])
-                num_array15.append(i)
-    print(num_array15)
-    # return num_array15
+            if isinstance(i, (int)):
+                if i % 2 == 0:
+                    new_array.append(i)
+    # print(new_array)
     else:
         for i in array:
-            if i % 2 != 0:
-                num_array15.append(i)
-    print(num_array15)
-    # return num_array15
+            if isinstance(i, (int)):
+                if i % 2 != 0:
+                    new_array.append(i)
+    # print(new_array)
 
-# rnd_array15 = [1 , 3, 4, 5.5, 7565.4564, 44.44, 654.498, 8, 9, 10]
-array15 = [1 , 3, 4, 8, 9, 10, 11, 12]
-print(*array15)
-even_odd(array15, False)
-# print(num_array15)
+    return new_array
+
+rnd_array15 = [1 , 3, 4, 5.5, 7565.4564, 44.44, 654.498, 8, 9, 10]
+print("input_array:",*rnd_array15)
+# array15 = [1 , 3, 4, 8, 9, 10, 11, 12]
+# print("input_array:",*array15)
+
+# even_odd(array15, False)
+
+# print(even_odd(array15,))
+print(even_odd(rnd_array15,))
+# print(even_odd(array15,False))
+print(even_odd(rnd_array15,False))
+
+
 
 # Sukurkite funkciją number_is_prime. Funkcija priima skaičių, gražina True/False ar skaičius pirminis.
 # Sukurkite funkciją kuri priima du argumentus. Gražina pirmąjį skaičių pakeltą laipsniu tokiu kaip antras skaičius.
