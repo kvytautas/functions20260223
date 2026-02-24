@@ -222,29 +222,115 @@ def even_odd(array,boolean = True):
 
     return new_array
 
-rnd_array15 = [1 , 3, 4, 5.5, 7565.4564, 44.44, 654.498, 8, 9, 10]
-print("input_array:",*rnd_array15)
+exp_array15 = [1 , 3, 4, 5.5, 7565.4564, 44.44, 654.498, 8, 9, 10]
+print("input_array:",*exp_array15)
 # array15 = [1 , 3, 4, 8, 9, 10, 11, 12]
 # print("input_array:",*array15)
 
 # even_odd(array15, False)
 
 # print(even_odd(array15,))
-print(even_odd(rnd_array15,))
+print(even_odd(exp_array15,))
 # print(even_odd(array15,False))
-print(even_odd(rnd_array15,False))
-
+print(even_odd(exp_array15,False))
 
 
 # Sukurkite funkciją number_is_prime. Funkcija priima skaičių, gražina True/False ar skaičius pirminis.
+print("--------16--------")
+
+# rnd_numb_array = random.sample(range(1, 201), 50)
+# print(*rnd_numb_array)
+# pirminiai = sorted([
+#     i for i in numbers9
+#     if i > 1 and all(i % d != 0 for d in range(2, int(i**0.5) + 1))
+# ])
+# print("Pirminiai:", *pirminiai)
+
+
+rnd_numb = random.randint(1,1000)
+print(rnd_numb)
+
+def number_is_prime(number):
+    if number > 1 and all(number % i != 0 for i in range(2, int(number**0.5) + 1)):
+        return True
+    else:
+        return False
+
+print(number_is_prime(rnd_numb))
+
+
+
+
 # Sukurkite funkciją kuri priima du argumentus. Gražina pirmąjį skaičių pakeltą laipsniu tokiu kaip antras skaičius.
+print("--------17--------")
+
+def exp_degree(a,b):
+    return a ** b
+
+print(exp_degree(2,4))
+
+
 # Sukurkite funkciją kuri priima skaičių masyvą ir gražina tik skirtingus elementus. (panašiai kaip sql distinct)
+print("--------18--------")
+
+def rnd_num_array(min, max, length):
+    array = []
+    for i in range(length):
+        array.append(random.randint(min, max))
+    return array
+
+array18 = rnd_num_array(0,10,10)
+print("input:",*array18)
+
+def unique_array(num_array):
+    array_of_unique_values = []
+
+    for i in range(len(num_array)):
+        if num_array[i] not in array_of_unique_values:
+            array_of_unique_values.append(num_array[i])
+    return array_of_unique_values
+
+print(unique_array(array18))
+
 # Sukurkite funkciją kuri priima tekstą ir atspausdina tekste daugiausiai pasikartojantį simbolį.
+print("--------19--------")
+
+def generate_rnd_str(length):
+  symbols = " ABCDEFGHIJKLMNOPQRSTUVWXYZ12345678901234567890 "
+  text = ""
+  for i in range(length):
+    text += symbols[random.randint(0,len(symbols) -1)]
+  return text
+
+rnd_text = generate_rnd_str(50)
+print("Text:",rnd_text)
+
+def top_symbol(txt):
+    symbol = ""
+    counter = 0
+    for i in txt:
+        count_symbol = txt.count(i)
+        if count_symbol > counter:
+            counter = count_symbol
+            symbol = i
+
+    return symbol
+
+print("Symbol:", top_symbol(rnd_text))
+
 # Sukurkite funkciją kuri priima tekstą ir atspausdina jame esantį ilgiausią žodį.
+print("--------20--------")
+
+def top_word(txt):
+    txt_to_array = txt.split()
+    word = ""
+
+    for i in txt_to_array:
+        if len(i) > len(word):
+            word = i
+    return word
+
+print("Word",top_word(rnd_text), "\nLength", len(top_word(rnd_text)))
 
 
-
-
-# sunkesni
-# rnd_str = generate_rnd_str(400)
 
