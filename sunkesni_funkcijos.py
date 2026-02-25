@@ -49,8 +49,104 @@ def divisor_count(number):
 
     return counter
 
-print(divisor_count(20))
+num = 20
+print(num,divisor_count(num))
+num = 560
+print(num,divisor_count(num))
+num = 641
+print(num,divisor_count(num))
 
 # 4.	Sugeneruokite masyvą iš 100 elementų, kurio reikšmės atsitiktiniai skaičiai nuo 33 iki 77. Išrūšiuokite masyvą pagal daliklių be liekanos kiekį mažėjimo tvarka, panaudodami trečio uždavinio funkciją.
 print("--------4--------")
 
+from random_text_function import rnd_num_array
+
+rnd_array = rnd_num_array(33,77,100)
+# rnd_array.sort(reverse=False,key=divisor_count)
+# print("array:", rnd_array)
+
+def sort_by_divisor_count(array):
+    new_array = sorted(array, reverse=True,key=divisor_count)
+    return new_array
+
+print("Input:", rnd_array)
+print("Output:", sort_by_divisor_count(rnd_array))
+
+# 5.	Sugeneruokite masyvą iš 100 elementų, kurio reikšmės atsitiktiniai skaičiai nuo 333 iki 777. Naudodami 3 uždavinio funkciją iš masyvo suskaičiuokite kiek yra pirminių skaičių.
+print("--------5--------")
+
+rnd_array = rnd_num_array(333,777,100)
+
+def prime_number_count(array):
+    counter = 0
+    for i in range(len(array)):
+        if divisor_count(array[i]) == 0:
+            counter += 1
+
+    return counter
+
+print("Input:", rnd_array)
+print("Output:", prime_number_count(rnd_array))
+
+# 6.	Sugeneruokite atsitiktinio (nuo 10 iki 20) ilgio masyvą, kurio visi, išskyrus paskutinį, elementai yra atsitiktiniai skaičiai nuo 0 iki 10, o paskutinis elementas masyvas, kuris generuojamas pagal tokią pat salygą kaip ir pirmasis masyvas. Viską pakartokite atsitiktinį nuo 10 iki 30  kiekį kartų. Paskutinio masyvo paskutinis elementas yra lygus 0;
+print("--------6--------")
+
+
+def array_recursion(input):
+    if input == 0:
+        return 0
+
+    rnd_array_len = random.randint(10, 20)
+
+    array = [random.randint(0, 10) for i in range(rnd_array_len)]
+
+    array[-1] = array_recursion(input - 1)
+
+    return array
+
+input = random.randint(1, 3)
+result_array = array_recursion(input)
+
+print(input)
+print(result_array)
+
+# 7.	Suskaičiuokite šešto uždavinio elementų, kurie nėra masyvai, sumą. Skaičiuoti reikia visuose masyvuose ir submasyvuose.
+print("--------7--------")
+
+def array_nested_sum(array):
+    total = 0
+
+    for element in array:
+        if isinstance(element, list):
+            total += array_nested_sum(element)  # if the element is a list, sum it recursively
+        else:
+            total += element             # if it's a number, add it directly
+
+    return total
+
+print("input array:",result_array)
+print("sum",array_nested_sum(result_array))
+
+# 8.	Sugeneruokite masyvą iš trijų elementų, kurie yra atsitiktiniai skaičiai nuo 1 iki 33. Jeigu tarp trijų paskutinių elementų yra nors vienas ne pirminis skaičius, prie masyvo pridėkite dar vieną elementą- atsitiktinį skaičių nuo 1 iki 33. Vėl patikrinkite pradinę sąlygą ir jeigu reikia pridėkite dar vieną elementą. Kartokite, kol sąlyga nereikalaus pridėti elemento.
+print("--------8--------")
+
+def number_is_prime(number):
+    if number > 1 and all(number % i != 0 for i in range(2, int(number**0.5) + 1)):
+        return True
+    else:
+        return False
+
+# print(number_is_prime(rnd_numb))
+
+random_array = random.sample(range(1, 33), 3)
+print(*random_array)
+
+# def array_of_primes(array):
+#     for i in array:
+#         if number_is_prime(i)
+#
+#
+# if number > 1 and all(number % i != 0 for i in range(2, int(number ** 0.5) + 1)):
+#     return True
+# else:
+#     return False
