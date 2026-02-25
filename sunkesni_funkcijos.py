@@ -135,18 +135,45 @@ def number_is_prime(number):
         return True
     else:
         return False
+def rnd_num_array(min, max, length):
+  array = []
+  for i in range(length):
+    array.append(random.randint(min, max))
+  return array
 
-# print(number_is_prime(rnd_numb))
+rnd_arr = rnd_num_array(1,33,3)
+print(rnd_arr)
+# random_array = random.sample(range(1, 33), 3) # random unique
+# print(random_array)
 
-random_array = random.sample(range(1, 33), 3)
-print(*random_array)
+print(number_is_prime(rnd_arr[0]),number_is_prime(rnd_arr[1]),number_is_prime(rnd_arr[2]))
 
-# def array_of_primes(array):
-#     for i in array:
-#         if number_is_prime(i)
-#
-#
-# if number > 1 and all(number % i != 0 for i in range(2, int(number ** 0.5) + 1)):
-#     return True
-# else:
-#     return False
+def array_of_primes(array):
+
+    while True:
+        new_array = array[-3:]
+        if len(new_array) == 3 and all(number_is_prime(i) for i in new_array):
+            return array
+
+        rnd_num = random.randint(1,33)
+        array.append(rnd_num)
+
+print(array_of_primes(rnd_arr))
+
+
+# 9.	Sugeneruokite masyvą iš 10 elementų, kurie yra masyvai iš 10 elementų, kurie yra atsitiktiniai skaičiai nuo 1 iki 100. Jeigu tokio didelio masyvo (ne atskirai mažesnių) pirminių skaičių vidurkis mažesnis už 70, suraskite masyve mažiausią skaičių (nebūtinai pirminį) ir prie jo pridėkite 3. Vėl paskaičiuokite masyvo pirminių skaičių vidurkį ir jeigu mažesnis nei 70 viską kartokite.
+print("--------9--------")
+
+massive_array = []
+for i in range(10):
+    random_array = (rnd_num_array(1,100,10))
+    massive_array.append(random_array)
+
+print(massive_array)
+
+total = 0
+massive_array_sums = []
+for array in massive_array:
+    massive_array_sums.append(sum(array))
+
+print(massive_array_sums)
